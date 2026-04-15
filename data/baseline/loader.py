@@ -8,7 +8,8 @@ import openpyxl
 
 # Resolve the Excel file relative to this package, or fall back to project root
 _HERE = Path(__file__).resolve().parent
-_DEFAULT_PATH = _HERE.parents[2] / "BEDA_Enriched.xlsx"
+# data/baseline/ -> data/ -> project root; Excel sits in data/
+_DEFAULT_PATH = _HERE.parent / "BEDA_Enriched.xlsx"
 
 
 _UNICODE_DASHES = str.maketrans({
