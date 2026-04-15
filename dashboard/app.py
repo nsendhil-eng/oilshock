@@ -36,6 +36,26 @@ st.set_page_config(
 )
 
 # ---------------------------------------------------------------------------
+# Password gate
+# ---------------------------------------------------------------------------
+def _check_password() -> bool:
+    if st.session_state.get("authenticated"):
+        return True
+    st.title("Hormuz Shock Simulator")
+    st.caption("Brisbane Economic Development Agency — restricted access")
+    pwd = st.text_input("Password", type="password")
+    if st.button("Enter"):
+        if pwd == st.secrets.get("APP_PASSWORD", ""):
+            st.session_state["authenticated"] = True
+            st.rerun()
+        else:
+            st.error("Incorrect password.")
+    return False
+
+if not _check_password():
+    st.stop()
+
+# ---------------------------------------------------------------------------
 # Cached loaders
 # ---------------------------------------------------------------------------
 @st.cache_data(show_spinner="Loading BEDA baseline data…")
