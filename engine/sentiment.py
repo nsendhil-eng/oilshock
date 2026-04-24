@@ -42,16 +42,16 @@ CHAIN: list[ChainNode] = [
     ChainNode("Disposable Income Index", lag_weeks=3, transfer_coefficient=0.45, direction=-1),
     # Node 3: consumer sentiment tracks disposable income with slight lag
     # Westpac-MI Consumer Sentiment fell from 100→83.7 (~-16pp) by Aug 2022
-    ChainNode("Consumer Sentiment Index", lag_weeks=4, transfer_coefficient=0.55, direction=-1),
+    ChainNode("Consumer Sentiment Index", lag_weeks=4, transfer_coefficient=0.55, direction=+1),
     # Node 4: retail spend responds to sentiment (lag ~2 weeks post-sentiment move)
     # Discretionary retail led; grocery partially offset
-    ChainNode("Retail Spend Index", lag_weeks=2, transfer_coefficient=0.48, direction=-1),
+    ChainNode("Retail Spend Index", lag_weeks=2, transfer_coefficient=0.48, direction=+1),
     # Node 5: business confidence tracks retail + sentiment (NAB fell -20pp in 3 months)
-    ChainNode("Business Confidence Index", lag_weeks=3, transfer_coefficient=0.52, direction=-1),
+    ChainNode("Business Confidence Index", lag_weeks=3, transfer_coefficient=0.52, direction=+1),
     # Node 6: hiring intentions respond to confidence (ANZ-Indeed vacancy data)
-    ChainNode("Hiring Intentions Index", lag_weeks=5, transfer_coefficient=0.40, direction=-1),
+    ChainNode("Hiring Intentions Index", lag_weeks=5, transfer_coefficient=0.40, direction=+1),
     # Node 7: investment pipeline — longest lag; projects deferred/cancelled
-    ChainNode("Investment Pipeline Index", lag_weeks=8, transfer_coefficient=0.35, direction=-1),
+    ChainNode("Investment Pipeline Index", lag_weeks=8, transfer_coefficient=0.35, direction=+1),
 ]
 
 
